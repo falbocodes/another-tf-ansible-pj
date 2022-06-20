@@ -1,0 +1,8 @@
+---
+- name: This is a hello-world example
+  hosts: 127.0.0.1
+  gather_facts: true
+
+  tasks:
+    - name: distribution
+      debug: msg="{{ ansible_distribution }}"
