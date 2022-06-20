@@ -11,6 +11,10 @@ variable "instance-type" {
   default = "t2.small"
 }
 
+variable "docker-volume" {
+  default = "40"
+}
+
 variable "region" {
   default = "eu-west-1"
 }
