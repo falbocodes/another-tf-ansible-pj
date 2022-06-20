@@ -53,3 +53,9 @@ ansible-playbook -i ansible/ ansible/playbook-base.yml
 At the end you will have: 
 - a shinny docker swarm cluster 
 
+## Future improvements
+- switching from ec2 instance to autoscaling group
+- run ansible-play after first instance provisioning
+- improve security 
+- add molecule tests
+- run ansible-play after having provisioned the instances
