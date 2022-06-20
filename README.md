@@ -35,7 +35,7 @@ At the end you will have:
 - two aws istances
 - two ebs volume attached to the instances
 - a key.pem that you can use for ssh connections
-- 
+
 # Then was the ansible shift...
 
 You have to install necessary requirements
@@ -55,7 +55,6 @@ At the end you will have:
 
 ## Future improvements
 - switching from ec2 instance to autoscaling group
-- run ansible-play after first instance provisioning
 - improve security 
 - add molecule tests
 - run ansible-play after having provisioned the instances
