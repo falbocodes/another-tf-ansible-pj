@@ -16,7 +16,7 @@ unzip awscliv2.zip
 sleep 60
 echo "Get sshkey"
 whoami
-aws ssm get-parameter --name "/ssh/ec2/anothe-tf-ansible-pj" --with-decryption --output text --query Parameter.Value >> ~/.ssh/id_rsa
+aws ssm get-parameter --name "/ssh/ec2/another-tf-ansible-pj" --with-decryption --output text --query Parameter.Value >> ~/.ssh/id_rsa
 
 chmod 0600 ~/.ssh/id_rsa && \
     ssh-keyscan github.com >> ~/.ssh/known_hosts \
