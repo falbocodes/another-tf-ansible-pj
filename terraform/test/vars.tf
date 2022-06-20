@@ -1,7 +1,7 @@
 terraform {
   backend "s3" {
     bucket         = "420995033334-terraform-states"
-    key            = "anothe-tf-ansible-pj/terraform.tfstate"
+    key            = "another-tf-ansible-pj/terraform.tfstate"
     region         = "eu-west-1"
     dynamodb_table = "420995033334-terraform-state-lock"
   }
@@ -17,7 +17,7 @@ data "terraform_remote_state" "global" {
 }
 
 variable "proj-name" {
-  default = "anothe-tf-ansible-pj"
+  default = "another-tf-ansible-pj"
 }
 
 variable "centos-ami-id" {
