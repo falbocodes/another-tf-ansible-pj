@@ -44,7 +44,7 @@ resource "aws_instance" "worker" {
 
 resource "aws_ebs_volume" "ebs-master" {
   availability_zone = aws_subnet.swarm_nodes.availability_zone
-  size              = 20
+  size              = var.docker-volume
 }
 
 resource "aws_volume_attachment" "ebs-master-att" {
@@ -55,7 +55,7 @@ resource "aws_volume_attachment" "ebs-master-att" {
 
 resource "aws_ebs_volume" "ebs-worker" {
   availability_zone = aws_subnet.swarm_nodes.availability_zone
-  size              = 20
+  size              = var.docker-volume
 }
 
 resource "aws_volume_attachment" "ebs-worker-att" {
