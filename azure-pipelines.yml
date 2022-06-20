@@ -1,0 +1,43 @@
+trigger:
+  branches:
+    include:
+    - main
+    - releases/*
+  paths:
+    include:
+    - ansible
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+parameters:
+  - name: playbook_name
+    displayName: 'playbook_name'
+    type: string
+    default: helloworld
+    
+stages:
+  - stage: Ansible_Lint
+    displayName: 'Linting...'
+    jobs:
+    - job: ansible_lint
+      displayName: 'linting...'
+      steps:
+        - bash: |
+            python -m pip install ansible-lint
+            cat <<EOF >> .ansible-lint
+            skip_list:
+              - 'fqcn-builtins'
+            EOF
+          displayName: 'installing ansible-lint'
+        - bash: |
+            ansible-galaxy install -r ansible/requirements.yml --ignore-certs
+          displayName: 'bring requirements'
+        - bash: |
+            ansible-lint ansible/playbook-${{ parameters.playbook_name }}.yml
+          displayName: 'execute ansible-lint'
+
+
+            
+
+            
