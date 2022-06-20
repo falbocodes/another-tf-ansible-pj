@@ -1,0 +1,24 @@
+- name: Create list of mounted devices
+  set_fact:
+    mounted_devices: "{{ ansible_mounts|json_query('[].device') }}"
+
+- name: Create a new  partition
+  community.general.parted:
+    device: /dev/xvdh
+    number: 2
+    state: present
+  when: mount_src not in mounted_devices
+
+- name: Format partition
+  filesystem:
+    fstype: ext4
+    dev: /dev/xvdh
+  when: mount_src not in mounted_devices
+
+- name: Mount partition
+  mount:
+    fstype: ext4
+    src: /dev/xvdh
+    path: /var/lib/docker
+    state: mounted
+  when: mount_src not in mounted_devices
