@@ -1,0 +1,15 @@
+---
+- name: "Provision Docker Swarm Cluster"
+  hosts: docker_engine
+  vars:
+    skip_docker_compose: false
+    mount_src: /dev/xvdh
+  become: true
+  pre_tasks:
+    - import_tasks: tasks/packages.yml
+    - import_tasks: tasks/disk-partition.yml
+    - import_tasks: tasks/install-docker.yml
+
+
+  roles:
+    - role: atosatto.docker-swarm
